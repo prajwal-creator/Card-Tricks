@@ -6,8 +6,6 @@ from settings import Settings
 from CardSet import CardSet
 import time
 
-white = (255, 255, 255)
-
 
 # Deck of 52 Cards
 decka = pydealer.Deck()
@@ -269,10 +267,10 @@ class CardGame:
         # for var in range(len(n_cards)-1):
         #     r, c = Index_Card_Image(3, 5)
         #     if n_cards == l_cards:
-        #         self.CardSet.cards[r * 13 + c].blitmehere(450, var * 80)
+        #         self.CardSet.cards[r * 13 + c].blitmehere(450,100+ var * 80)
         #         time.sleep(0.1)
         #     elif n_cards == rr_cards:
-        #         self.CardSet.cards[r * 13 + c].blitmehere(600, var * 80)
+        #         self.CardSet.cards[r * 13 + c].blitmehere(600,100+ var * 80)
         #         time.sleep(0.1)
         #     pygame.display.flip()
 
@@ -281,10 +279,10 @@ class CardGame:
             x = x.split(" ")
             r, c = Index_Card_Image(x[0], x[2])
             if n_cards == l_cards:
-                self.CardSet.cards[r * 13 + c].blitmehere(450, var * 80 + 80)
+                self.CardSet.cards[r * 13 + c].blitmehere(450,100+ var * 80 + 80)
                 time.sleep(0.1)
             elif n_cards == rr_cards:
-                self.CardSet.cards[r * 13 + c].blitmehere(600, var * 80 + 80)
+                self.CardSet.cards[r * 13 + c].blitmehere(600,100+ var * 80 + 80)
                 time.sleep(0.1)
             pygame.display.flip()
 
@@ -298,10 +296,10 @@ class CardGame:
         # for var in range(len(n_cards)):
         #     r, c = Index_Card_Image(3, 5)
         #     if n_cards == l_cards:
-        #         self.CardSet.cards[r * 13 + c].blitmehere(450, var * 80)
+        #         self.CardSet.cards[r * 13 + c].blitmehere(450,100+ var * 80)
         #         time.sleep(0.1)
         #     elif n_cards == rr_cards:
-        #         self.CardSet.cards[r * 13 + c].blitmehere(600, var * 80)
+        #         self.CardSet.cards[r * 13 + c].blitmehere(600,100+ var * 80)
         #         time.sleep(0.1)
         #     pygame.display.flip()
 
@@ -310,10 +308,10 @@ class CardGame:
             x = x.split(" ")
             r, c = Index_Card_Image(x[0], x[2])
             if n_cards == l_cards:
-                self.CardSet.cards[r * 13 + c].blitmehere(450, var * 80)
+                self.CardSet.cards[r * 13 + c].blitmehere(450,100+ var * 80)
                 time.sleep(0.1)
             elif n_cards == rr_cards:
-                self.CardSet.cards[r * 13 + c].blitmehere(600, var * 80)
+                self.CardSet.cards[r * 13 + c].blitmehere(600,100+ var * 80)
                 time.sleep(0.1)
             pygame.display.flip()
       

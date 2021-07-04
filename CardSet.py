@@ -50,15 +50,15 @@ class Cards:
     def blitme(self, i, j):
         """Draw the card at its current location."""
         self.rect = self.image.get_rect()
-        self.rect.y = 80 + 50*i
-        self.rect.x = 80 + 180*(j)
+        self.rect.y = 100 + 50*i
+        self.rect.x = 80 + 140*(j)
         self.screen.blit(self.image, self.rect)
 
     def blitmehere(self, pos_x, pos_y):
         """Draw the card at position (x,y) on the screen"""
         self.rect = self.image.get_rect()
         self.rect.x = pos_x
-        self.rect.y = 100+pos_y
+        self.rect.y = pos_y
         self.screen.blit(self.image, self.rect)
 
     def moveright(self):
