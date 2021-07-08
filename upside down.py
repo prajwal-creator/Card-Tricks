@@ -7,7 +7,7 @@ from CardSet import CardSet
 import time
 
 deck = pydealer.Deck()
-# deck.shuffle()
+deck.shuffle()
 sel_cards = deck.deal(3)
 first_deck = deck.deal(10)
 second_deck = deck.deal(15)
@@ -16,6 +16,8 @@ rem_deck = deck.deal(9)
 temp = pydealer.Deck()
 temp.empty()
 white = (255, 255, 255)
+pygame.init()
+font1 = pygame.font.Font('Fonts/Walkway_SemiBold.ttf', 32)
 def Index_Card_Image(value,suit):
     column = -1
     row = -1
@@ -46,7 +48,7 @@ def Index_Card_Image(value,suit):
 
 class CardGame:
     deck = pydealer.Deck()
-    #deck.shuffle()
+    deck.shuffle()
     sel_cards = deck.deal(3)
     first_deck = deck.deal(10)
     second_deck = deck.deal(15)
@@ -94,6 +96,10 @@ class CardGame:
                     self._update_screen_1(self.third_deck)
                     self._update_screen_1(self.rem_deck)
                     self.x=80
+                    txt = font1.render("click ctrl key to Continue", True, (255, 255, 0))
+                    self.screen.blit(txt, (480, 650))
+                    pygame.display.flip()
+
                 elif event.key == pygame.K_RCTRL:
                     self.screen.fill(self.settings.bg_color, pygame.Rect(self.x, 60, 100, 155))
                     pygame.display.flip()
@@ -147,17 +153,35 @@ class CardGame:
                     elif self.i == 12:
                         self.update_deck1(self.i)
 
+                    elif self.i == 13:
+                        self.update_deck1(self.i)
+                    
+                    self.printonscreen(self.i)
                     self.i = self.i+1
                     if self.x < 600:
                         self.x = self.x+140
 
                 elif event.key == pygame.K_LEFT and self.i:
                     self.update_deck(self.i)
+    def printonscreen(self,m):
+        if m == 0 or m == 1 or m == 2:
+            self.screen.fill(self.settings.bg_color, pygame.Rect(480, 650, 650, 100))
+            txt = font1.render("click left key to shift the Cards", True, (255, 255, 0))
+            txta = font1.render("and Ctrl key to form the decks", True, (255, 255, 0))
+            self.screen.blit(txt, (480, 650))
+            self.screen.blit(txta, (520, 700))
+            pygame.display.flip()
+        # if m == 3 or m == 4 or m == 5:
+        #     self.screen.fill(self.settings.bg_color, pygame.Rect(480, 650, 650, 100))
+        #     txt = font1.render("click Ctrl key to move the cards and to arrange into a single deck", True, (255, 255, 0))
+        #     self.screen.blit(txt, (380, 650))
+        #     pygame.display.flip()
 
     def print_right(self,cardslist):
-        self.screen.fill(self.settings.bg_color, pygame.Rect(self.x, 250, 100, 600))
-        pygame.display.flip()
-        self.screen.fill(self.settings.bg_color, pygame.Rect(950, 20, 100, 1000))
+        if self.x<500:
+            self.screen.fill(self.settings.bg_color, pygame.Rect(self.x, 250, 100, 600))
+            pygame.display.flip()
+        self.screen.fill(self.settings.bg_color, pygame.Rect(950, 20, 100, 680))
         pygame.display.flip()
         for var in range(len(cardslist)):
             r, c = Index_Card_Image(3, 5)
@@ -200,7 +224,7 @@ class CardGame:
             temp.empty()
 
         if d == 7:
-            self.screen.fill(self.settings.bg_color, pygame.Rect(820, 250, 100, 700))
+            self.screen.fill(self.settings.bg_color, pygame.Rect(820, 250, 100, 200))
             pygame.display.flip()
 
         if d == 8:
@@ -212,7 +236,7 @@ class CardGame:
                     self.down_deck.add(self.comb_deck1[z])
                 z = z-1
 
-            self.screen.fill(self.settings.bg_color, pygame.Rect(950, 20, 100, 1000))
+            self.screen.fill(self.settings.bg_color, pygame.Rect(950, 20, 100, 800))
             self.refresh_deck(self.up_deck,100,100)
             self.refresh_deck(self.down_deck,240,100)
 
@@ -234,7 +258,7 @@ class CardGame:
                 z = z - 1
 
             temp.empty()
-            self.screen.fill(self.settings.bg_color, pygame.Rect(240, 100, 100, 1000))
+            self.screen.fill(self.settings.bg_color, pygame.Rect(240, 100, 100, 600))
             self.refresh_deck(self.up_deck, 240, 100)
             self.refresh_deck(self.down_deck, 380, 100)
 
@@ -255,7 +279,7 @@ class CardGame:
                 z = z - 1
             print(self.down_deck)
             temp.empty()
-            self.screen.fill(self.settings.bg_color, pygame.Rect(380, 100, 100, 1000))
+            self.screen.fill(self.settings.bg_color, pygame.Rect(380, 100, 100, 400))
             self.refresh_deck(self.up_deck, 380, 100)
             self.refresh_deck(self.down_deck, 520, 100)
 
@@ -275,7 +299,7 @@ class CardGame:
                     self.down_deck.add(temp[z])
                 z = z - 1
             temp.empty()
-            self.screen.fill(self.settings.bg_color, pygame.Rect(520, 100, 100, 1000))
+            self.screen.fill(self.settings.bg_color, pygame.Rect(520, 100, 100, 400))
             self.refresh_deck(self.up_deck, 520, 100)
             self.refresh_deck(self.down_deck, 660, 100)
 
@@ -283,8 +307,18 @@ class CardGame:
             self.up_deck.empty()
             self.up_deck.add(self.down_deck)
             self.down_deck.empty()
-            self.screen.fill(self.settings.bg_color, pygame.Rect(660, 100, 100, 1000))
+            self.screen.fill(self.settings.bg_color, pygame.Rect(660, 100, 100, 400))
             self.refresh_deck(self.up_deck, 660, 100)
+
+        if d == 13:
+            self.screen.fill(self.settings.bg_color, pygame.Rect(660, 100, 100, 400))
+            for var in range(3):
+                x = str(self.up_deck[var])
+                x = x.split(" ")
+                r, c = Index_Card_Image(x[0], x[2])
+                self.CardSet.cards[r * 13 + c].blitmehere(660+140*var,350)
+                pygame.display.flip()
+                time.sleep(0.1)
 
     def refresh_deck(self,cardslist,m,n):
         self.screen.fill(self.settings.bg_color, pygame.Rect(m, n, 100, 400))
